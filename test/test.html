@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+        <link rel="stylesheet" href="../src/css/boostrap-check.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-header">
+                        <h1>Checkbox</h1>
+                    </div>
+                    <fieldset>
+                        <legend>standard</legend>
+                        <div class="form-group">
+                            <input type="checkbox" id="standard-check1" name="standard-check1" checked />
+                            <label for="standard-check1">check1</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="standard-check2" name="standard-check2" />
+                            <label for="standard-check2">check2</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="standard-check3" name="standard-check3" />
+                            <label for="standard-check3">check3</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-sm-6">
+                    <div class="page-header">
+                        <h1>Radio</h1>
+                    </div>
+                    <fieldset>
+                        <legend>standard</legend>
+                        <div class="form-group">
+                            <input type="radio" id="standard-radio1" name="standard-radio" checked />
+                            <label for="standard-radio1">radio1</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" id="standard-radio2" name="standard-radio" />
+                            <label for="standard-radio2">radio2</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" id="standard-radio3" name="standard-radio" />
+                            <label for="standard-radio3">radio3</label>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../src/js/bootstrap-check.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('input[type=checkbox], input[type=radio]').check();
+            });
+        </script>
+    </body>
+</html>
