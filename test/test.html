@@ -79,13 +79,13 @@
                     <fieldset>
                         <legend>standard</legend>
                         <div class="form-group">
-                            <input type="radio" id="standard-radio1" name="standard-radio" checked />
+                            <input type="radio" id="standard-radio1" name="standard-radio" value="1" checked />
                             <label for="standard-radio1">radio1</label>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <input type="radio" id="standard-radio2" name="standard-radio" checked />
+                                    <input type="radio" id="standard-radio2" name="standard-radio" value="2" />
                                 </div>
                                 <label for="standard-radio2" class="form-control">radio2</label>
                             </div>
@@ -95,15 +95,15 @@
                         <fieldset>
                             <legend>basic</legend>
                             <div class="form-group">
-                                <input type="radio" id="basic-radio1" name="basic-radio" checked />
+                                <input type="radio" id="basic-radio1" name="basic-radio" value="1" checked />
                                 <label for="basic-radio1">radio1</label>
                             </div>
                             <div class="form-group">
-                                <input type="radio" id="basic-radio2" name="basic-radio" />
+                                <input type="radio" id="basic-radio2" name="basic-radio" value="2" />
                                 <label for="basic-radio2">radio2</label>
                             </div>
                             <div class="form-group">
-                                <input type="radio" id="basic-radio3" name="basic-radio" />
+                                <input type="radio" id="basic-radio3" name="basic-radio" value="3" />
                                 <label for="basic-radio3">radio3</label>
                             </div>
                         </fieldset>
@@ -112,7 +112,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <input type="radio" id="inputgroup-radio1" name="inputgroup-radio" checked />
+                                        <input type="radio" id="inputgroup-radio1" name="inputgroup-radio" value="1" checked />
                                     </div>
                                     <label for="inputgroup-radio1" class="form-control">radio1</label>
                                 </div>
@@ -120,7 +120,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <input type="radio" id="inputgroup-radio2" name="inputgroup-radio" />
+                                        <input type="radio" id="inputgroup-radio2" name="inputgroup-radio" value="2" />
                                     </div>
                                     <label for="inputgroup-radio2" class="form-control">radio2</label>
                                 </div>
@@ -128,7 +128,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <input type="radio" id="inputgroup-radio3" name="inputgroup-radio" />
+                                        <input type="radio" id="inputgroup-radio3" name="inputgroup-radio" value="3" />
                                     </div>
                                     <label for="inputgroup-radio3" class="form-control">radio3</label>
                                 </div>
@@ -145,6 +145,9 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $('form input[type=checkbox], form input[type=radio]').check();
+                $('form input[type=checkbox], form input[type=radio]').change(function () {
+                    console.log('control changed', this, this.checked);
+                })
             });
         </script>
     </body>

@@ -32,23 +32,68 @@
         var _options = $.extend({}, $.fn.check.defaults, options);
         return this.each(function () {
             var ctx = null,
+                mark = null,
                 input = $(this),
-                type = input.attr('type');
+                type = input.attr('type'),
+                name = input.attr('name');
             switch (type) {
                 case 'checkbox':
-                ctx = input.hide().wrap('<span class="' + _options.checkboxClass + '" />').parent();
+                ctx = $('<span class="check-control" />');
+                mark = $('<span class="check-mark" />').hide().appendTo(ctx);
+                input
+                    .hide()
+                    .wrap('<span class="check-checkbox" />')
+                    .parent()
+                    .append(ctx);
                 break;
                 case 'radio':
-                ctx = input.hide().wrap('<span class="' + _options.radioClass + '" />').parent();
+                ctx = $('<span class="check-control" />');
+                mark = $('<span class="check-mark" />').hide().appendTo(ctx);
+                input
+                    .hide()
+                    .wrap('<span class="check-radio" />')
+                    .parent()
+                    .append(ctx);
                 break;
                 default:
                 console.error('Invalid type: ', this);
                 break;
             }
 
-            console.log(ctx);
+            if (input.is(':checked')) {
+                mark.show();
+            }
+
+            ctx
+                .on('click', function (e) {
+                    if (type === 'radio') {
+                        $('[name="' + name + '"]').prop('checked', false).change().parent().find('.check-mark').hide();
+                    }
+
+                    if (!input.is(':checked')) {
+                        input.prop('checked', true);
+                        mark.show();
+                    }
+                    else {
+                        input.prop('checked', false);
+                        mark.hide();
+                    }
+
+                    input.change();
+                });
 
             $('body')
+                .on('click', '[for="' + input.attr('id') + '"]', function (e) {
+                    e.preventDefault();
+                    ctx.trigger('click');
+                    return false;
+                })
+                .on('mousedown', '[for="' + input.attr('id') + '"]', function () {
+                    ctx.addClass('active');
+                })
+                .on('mouseup', '[for="' + input.attr('id') + '"]', function () {
+                    ctx.removeClass('active');
+                })
                 .on('mouseenter', '[for="' + input.attr('id') + '"]', function () {
                     ctx.addClass('hover');
                 })
@@ -59,6 +104,9 @@
     };
     $.fn.check.defaults = {
         checkboxClass: 'check-checkbox',
-        radioClass: 'check-radio'
+        radioClass: 'check-radio',
+
+        checkboxSelectedClass: 'check-checked',
+        radioSelectedClass: 'check-checked'
     };
 } ($));
