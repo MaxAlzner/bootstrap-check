@@ -28,8 +28,37 @@
  */
 (function ($) {
     'use strict';
-    $.fn.check = function (option) {
-        console.log(this);
-        return this;
+    $.fn.check = function (options) {
+        var _options = $.extend({}, $.fn.check.defaults, options);
+        return this.each(function () {
+            var ctx = null,
+                input = $(this),
+                type = input.attr('type');
+            switch (type) {
+                case 'checkbox':
+                ctx = input.hide().wrap('<span class="' + _options.checkboxClass + '" />').parent();
+                break;
+                case 'radio':
+                ctx = input.hide().wrap('<span class="' + _options.radioClass + '" />').parent();
+                break;
+                default:
+                console.error('Invalid type: ', this);
+                break;
+            }
+
+            console.log(ctx);
+
+            $('body')
+                .on('mouseenter', '[for="' + input.attr('id') + '"]', function () {
+                    ctx.addClass('hover');
+                })
+                .on('mouseout', '[for="' + input.attr('id') + '"]', function () {
+                    ctx.removeClass('hover');
+                });
+        });
+    };
+    $.fn.check.defaults = {
+        checkboxClass: 'check-checkbox',
+        radioClass: 'check-radio'
     };
 } ($));
