@@ -42,18 +42,20 @@
                 mark = $('<span class="check-mark" />').hide().appendTo(ctx);
                 input
                     .hide()
-                    .wrap('<span class="check-checkbox" />')
+                    .wrap('<span class="check check-default" />')
                     .parent()
-                    .append(ctx);
+                    .append(ctx)
+                    .attr('data-type', 'checkbox');
                 break;
                 case 'radio':
                 ctx = $('<span class="check-control" />');
                 mark = $('<span class="check-mark" />').hide().appendTo(ctx);
                 input
                     .hide()
-                    .wrap('<span class="check-radio" />')
+                    .wrap('<span class="check check-default" />')
                     .parent()
-                    .append(ctx);
+                    .append(ctx)
+                    .attr('data-type', 'radio');
                 break;
                 default:
                 console.error('Invalid type: ', this);
