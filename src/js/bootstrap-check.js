@@ -82,24 +82,26 @@
                     input.change();
                 });
 
-            $('body')
-                .on('click', '[for="' + input.attr('id') + '"]', function (e) {
-                    e.preventDefault();
-                    ctx.trigger('click');
-                    return false;
-                })
-                .on('mousedown', '[for="' + input.attr('id') + '"]', function () {
-                    ctx.addClass('active');
-                })
-                .on('mouseup', '[for="' + input.attr('id') + '"]', function () {
-                    ctx.removeClass('active');
-                })
-                .on('mouseenter', '[for="' + input.attr('id') + '"]', function () {
-                    ctx.addClass('hover');
-                })
-                .on('mouseout', '[for="' + input.attr('id') + '"]', function () {
-                    ctx.removeClass('hover');
-                });
+            if (input.attr('id')) {
+                $('body')
+                    .on('click', '[for="' + input.attr('id') + '"]', function (e) {
+                        e.preventDefault();
+                        ctx.trigger('click');
+                        return false;
+                    })
+                    .on('mousedown', '[for="' + input.attr('id') + '"]', function () {
+                        ctx.addClass('active');
+                    })
+                    .on('mouseup', '[for="' + input.attr('id') + '"]', function () {
+                        ctx.removeClass('active');
+                    })
+                    .on('mouseenter', '[for="' + input.attr('id') + '"]', function () {
+                        ctx.addClass('hover');
+                    })
+                    .on('mouseout', '[for="' + input.attr('id') + '"]', function () {
+                        ctx.removeClass('hover');
+                    });
+            }
         });
     };
     $.fn.check.defaults = {

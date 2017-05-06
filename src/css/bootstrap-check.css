@@ -1,23 +1,25 @@
 
 .check-checkbox,
 .check-radio,
-.check-control {
-    display: inline-block;
+.check-control,
+.check-mark {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+.check-checkbox,
+.check-radio,
+.check-control {
+    display: inline-block;
     width: 13px;
     height: 13px;
 }
 
-.check-checkbox .check-mark,
-.check-radio .check-mark {
+.check-mark {
     display: block;
     position: relative;
     float: left;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 .check-checkbox,
@@ -45,7 +47,6 @@
     width: 5px;
     height: 9px;
     left: 3px;
-    top: -0.5px;
     background: none;
     border: 1px solid black;
     border-top: none;
