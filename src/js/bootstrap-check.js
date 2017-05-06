@@ -30,37 +30,33 @@
     'use strict';
     $.fn.check = function (options) {
         var _options = $.extend({}, $.fn.check.defaults, options);
+        console.log(_options);
         return this.each(function () {
             var ctx = null,
                 mark = null,
                 input = $(this),
                 type = input.attr('type'),
                 name = input.attr('name');
-            switch (type) {
-                case 'checkbox':
-                ctx = $('<span class="check-control" />');
-                mark = $('<span class="check-mark" />').hide().appendTo(ctx);
-                input
-                    .hide()
-                    .wrap('<span class="check check-default" />')
-                    .parent()
-                    .append(ctx)
-                    .attr('data-type', 'checkbox');
-                break;
-                case 'radio':
-                ctx = $('<span class="check-control" />');
-                mark = $('<span class="check-mark" />').hide().appendTo(ctx);
-                input
-                    .hide()
-                    .wrap('<span class="check check-default" />')
-                    .parent()
-                    .append(ctx)
-                    .attr('data-type', 'radio');
-                break;
-                default:
+
+            if (!(type === 'checkbox' || type === 'radio')) {
                 console.error('Invalid type: ', this);
-                break;
+                return false;
             }
+
+            if (input.parent().is('.check')) {
+                console.error('bootstrap.check has already been initialized on this element: ', this);
+                return false;
+            }
+
+            ctx = $('<span class="check-control" />');
+            mark = $('<span class="check-mark" />').hide().appendTo(ctx);
+            input
+                .hide()
+                .wrap('<span class="check" />')
+                .parent()
+                .append(ctx)
+                .addClass(_options.theme)
+                .attr('data-type', type);
 
             if (input.is(':checked')) {
                 mark.show();
@@ -107,10 +103,6 @@
         });
     };
     $.fn.check.defaults = {
-        checkboxClass: 'check-checkbox',
-        radioClass: 'check-radio',
-
-        checkboxSelectedClass: 'check-checked',
-        radioSelectedClass: 'check-checked'
+        theme: 'check-default'
     };
 } ($));
