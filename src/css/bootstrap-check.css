@@ -135,13 +135,32 @@
     border-radius: 8px;
 }
 
-.check.check-mono .check-mark {
+.check.check-mono[data-type=checkbox] .check-mark {
+    position: relative;
+    left: 1px;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+    color: #EFEFEF;
+    content: "\e013";
+}
+
+.check.check-mono[data-type=radio] .check-mark {
     width: 8px;
     height: 8px;
     left: 3px;
     top: 3px;
     background-color: #EFEFEF;
     box-shadow: none;
+}
+
+.check.check-mono[data-type=checkbox] .check-mark::before {
+    box-sizing: border-box;
+    content: "\e013";
 }
 
 .check.check-mono[data-type=radio] .check-mark {
@@ -161,15 +180,20 @@
     box-shadow: none;
 }
 
-.check.check-mono .check-control:hover > .check-mark,
-.check.check-mono .check-control.hover > .check-mark {
+.check.check-mono[data-type=checkbox] .check-control:hover > .check-mark,
+.check.check-mono[data-type=checkbox] .check-control.hover > .check-mark {
+    color: #E0E0E0;
+}
+
+.check.check-mono[data-type=radio] .check-control:hover > .check-mark,
+.check.check-mono[data-type=radio] .check-control.hover > .check-mark {
     background-color: #E8E8E8;
     -webkit-box-shadow: inset 0px 0px 3px 0px rgba(170,170,170,1);
     -moz-box-shadow: inset 0px 0px 3px 0px rgba(170,170,170,1);
     box-shadow: inset 0px 0px 3px 0px rgba(170,170,170,1);
 }
 
-.check.check-mono .check-control:active > .check-mark,
-.check.check-mono .check-control.active > .check-mark {
+.check.check-mono[data-type=radio] .check-control:active > .check-mark,
+.check.check-mono[data-type=radio] .check-control.active > .check-mark {
     box-shadow: none;
 }
