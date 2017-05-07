@@ -42,6 +42,14 @@
     margin-top: 0;
 }
 
+.checkbox .check.check-default,
+.checkbox-inline .check.check-default,
+.radio .check.check-default,
+.radio-inline .check.check-default {
+    position: absolute;
+    margin-left: -20px;
+}
+
 .check.check-default[data-type=checkbox] > .check-control {
     border: 1px solid black;
     background-color: white;

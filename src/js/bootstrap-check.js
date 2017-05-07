@@ -33,6 +33,7 @@
         console.log(_options);
         return this.each(function () {
             var ctx = null,
+                control = null,
                 mark = null,
                 input = $(this),
                 type = input.attr('type'),
@@ -48,13 +49,13 @@
                 return false;
             }
 
-            ctx = $('<span class="check-control" />');
-            mark = $('<span class="check-mark" />').hide().appendTo(ctx);
-            input
+            control = $('<span class="check-control" />');
+            mark = $('<span class="check-mark" />').hide().appendTo(control);
+            ctx = input
                 .hide()
                 .wrap('<span class="check" />')
                 .parent()
-                .append(ctx)
+                .append(control)
                 .addClass(_options.theme)
                 .attr('data-type', type);
 
@@ -62,8 +63,39 @@
                 mark.show();
             }
 
-            ctx
+            // input
+            //     .on('click', function (e) {
+            //         e.preventDefault();
+            //         e.stopPropagation();
+            //         return false;
+            //     });
+            if (ctx.parent().is('label') && !ctx.parent().is('[for]')) {
+                ctx
+                    .parent()
+                    .on('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        control.trigger('click');
+                        return false;
+                    })
+                    .on('mousedown', function () {
+                        control.addClass('active');
+                    })
+                    .on('mouseup', function () {
+                        control.removeClass('active');
+                    })
+                    .on('mouseenter', function () {
+                        control.addClass('hover');
+                    })
+                    .on('mouseout', function () {
+                        control.removeClass('hover');
+                    });
+            }
+
+            control
                 .on('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     if (type === 'radio') {
                         $('[name="' + name + '"]').prop('checked', false).change().parent().find('.check-mark').hide();
                     }
@@ -78,26 +110,28 @@
                     }
 
                     input.change();
+                    return false;
                 });
 
             if (input.attr('id')) {
                 $('body')
                     .on('click', '[for="' + input.attr('id') + '"]', function (e) {
                         e.preventDefault();
-                        ctx.trigger('click');
+                        e.stopPropagation();
+                        control.trigger('click');
                         return false;
                     })
                     .on('mousedown', '[for="' + input.attr('id') + '"]', function () {
-                        ctx.addClass('active');
+                        control.addClass('active');
                     })
                     .on('mouseup', '[for="' + input.attr('id') + '"]', function () {
-                        ctx.removeClass('active');
+                        control.removeClass('active');
                     })
                     .on('mouseenter', '[for="' + input.attr('id') + '"]', function () {
-                        ctx.addClass('hover');
+                        control.addClass('hover');
                     })
                     .on('mouseout', '[for="' + input.attr('id') + '"]', function () {
-                        ctx.removeClass('hover');
+                        control.removeClass('hover');
                     });
             }
         });
