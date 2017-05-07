@@ -100,3 +100,76 @@
 .check.check-default[data-type=radio] .check-control.hover > .check-mark {
     background-color: rgb(0, 120, 215);
 }
+
+/**** mono theme ****/
+
+.check.check-mono,
+.check.check-mono .check-control {
+    width: 16px;
+    height: 16px;
+}
+
+.check.check-mono {
+    margin-top: 4px;
+}
+
+.input-group-addon .check.check-mono {
+    margin-top: 0;
+}
+
+.checkbox .check.check-mono,
+.checkbox-inline .check.check-mono,
+.radio .check.check-mono,
+.radio-inline .check.check-mono {
+    position: absolute;
+    margin-top: 2px;
+    margin-left: -20px;
+}
+
+.check.check-mono > .check-control {
+    background-color: #808080;
+    border: 1px solid #707070;
+}
+
+.check.check-mono[data-type=radio] > .check-control {
+    border-radius: 8px;
+}
+
+.check.check-mono .check-mark {
+    width: 8px;
+    height: 8px;
+    left: 3px;
+    top: 3px;
+    background-color: #EFEFEF;
+    box-shadow: none;
+}
+
+.check.check-mono[data-type=radio] .check-mark {
+    border-radius: 4px;
+}
+
+.check.check-mono .check-control:hover,
+.check.check-mono .check-control.hover {
+    -webkit-box-shadow: inset 0px 0px 5px 1px rgba(102,102,102,1);
+    -moz-box-shadow: inset 0px 0px 5px 1px rgba(102,102,102,1);
+    box-shadow: inset 0px 0px 5px 1px rgba(102,102,102,1);
+}
+
+.check.check-mono .check-control:active,
+.check.check-mono .check-control.active {
+    background-color: #CFCFCF;
+    box-shadow: none;
+}
+
+.check.check-mono .check-control:hover > .check-mark,
+.check.check-mono .check-control.hover > .check-mark {
+    background-color: #E8E8E8;
+    -webkit-box-shadow: inset 0px 0px 3px 0px rgba(170,170,170,1);
+    -moz-box-shadow: inset 0px 0px 3px 0px rgba(170,170,170,1);
+    box-shadow: inset 0px 0px 3px 0px rgba(170,170,170,1);
+}
+
+.check.check-mono .check-control:active > .check-mark,
+.check.check-mono .check-control.active > .check-mark {
+    box-shadow: none;
+}

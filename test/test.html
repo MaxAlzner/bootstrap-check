@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </fieldset>
-                    <form id="default-theme">
+                    <form class="default-theme">
                         <fieldset>
                             <legend>default</legend>
                             <div class="form-group">
@@ -64,6 +64,35 @@
                                         <input type="checkbox" id="default-check4" name="default-check4" checked />
                                     </div>
                                     <label for="default-check4" class="form-control">input group</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <form class="mono-theme">
+                        <fieldset>
+                            <legend>mono</legend>
+                            <div class="form-group">
+                                <input type="checkbox" id="mono-check1" name="mono-check1" checked />
+                                <label for="mono-check1">just label</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="mono-check2" name="mono-check2"> block
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="mono-check3" name="mono-check3"> inline
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <input type="checkbox" id="mono-check4" name="mono-check4" checked />
+                                    </div>
+                                    <label for="mono-check4" class="form-control">input group</label>
                                 </div>
                             </div>
                         </fieldset>
@@ -100,7 +129,7 @@
                             </div>
                         </div>
                     </fieldset>
-                    <form>
+                    <form class="default-theme">
                         <fieldset>
                             <legend>default</legend>
                             <div class="form-group">
@@ -129,6 +158,35 @@
                             </div>
                         </fieldset>
                     </form>
+                    <form class="mono-theme">
+                        <fieldset>
+                            <legend>mono</legend>
+                            <div class="form-group">
+                                <input type="radio" id="mono-radio1" name="mono-radio" checked />
+                                <label for="mono-radio1">just label</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" id="mono-radio2" name="mono-radio"> block
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                    <input type="radio" id="mono-radio3" name="mono-radio"> inline
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <input type="radio" id="mono-radio4" name="mono-radio" />
+                                    </div>
+                                    <label for="mono-radio4" class="form-control">input group</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </div>
@@ -138,7 +196,10 @@
         <script type="text/javascript" src="../src/js/bootstrap-check.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $('form input[type=checkbox], form input[type=radio]').check();
+                $('form.default-theme input').check();
+                $('form.mono-theme input').check({
+                    theme: 'check-mono'
+                });
                 $('form input[type=checkbox], form input[type=radio]').change(function () {
                     console.log('control changed', this, this.checked);
                 })
