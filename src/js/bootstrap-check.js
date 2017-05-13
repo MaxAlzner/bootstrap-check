@@ -30,7 +30,6 @@
     'use strict';
     $.fn.check = function (options) {
         var _options = $.extend({}, $.fn.check.defaults, options);
-        console.log(_options);
         return this.each(function () {
             var ctx = null,
                 control = null,
@@ -97,7 +96,7 @@
                     e.preventDefault();
                     e.stopPropagation();
                     if (type === 'radio') {
-                        $('[name="' + name + '"]').prop('checked', false).change().parent().find('.check-mark').hide();
+                        $('[name="' + name + '"]:checked').prop('checked', false).change().parent().find('.check-mark').hide();
                     }
 
                     if (!input.is(':checked')) {
